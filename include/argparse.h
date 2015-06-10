@@ -3,9 +3,11 @@
 
 struct ap_parser
 {
+	struct linkedlist *		_M_subparsers;
 };
 struct ap_subparsers
 {
+	struct linkedlist *		_M_parsers;
 };
 struct ap_args
 {
@@ -26,9 +28,12 @@ void ap_set_defaults(struct ap_parser * parser, const char * name, void(*func)(s
  */
 void ap_add_argument(struct ap_parser * parser, const char * name, const char * help, int nargs);
 
-struct ap_args * ap_parse_args(struct ap_parser * parser, int ac, char ** av);
-
-void ap_call(struct ap_args * args_0, const char * name, struct ap_args * args_1);
+struct ap_args *		ap_parse_args(struct ap_parser * parser, int ac, char ** av);
+void				ap_help(
+		struct ap_parser * parser,
+		int ac,
+		char ** av);
+void				ap_call(struct ap_args * args_0, const char * name, struct ap_args * args_1);
 
 #endif
 

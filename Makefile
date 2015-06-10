@@ -1,4 +1,7 @@
 
+inc_dir = -I/home/chuck/git/stdc/include -Iinclude
+lib_dir = -L/home/chuck/git/stdc/build
+
 src = $(shell find src -name "*.c")
 
 obj = $(patsubst %.c,%.o,$(src))
@@ -14,7 +17,7 @@ GCC = gcc
 all: $(test)
 
 %.o: %.c
-	@$(GCC) -c $^ -o $@ -Iinclude
+	@$(GCC) -c $^ -o $@ $(inc_dir)
 
 $(bin): $(obj)
 	@echo build $@
@@ -24,7 +27,7 @@ $(bin): $(obj)
 
 $(test): $(bin)
 	@mkdir -p $(dir $@)
-	@$(GCC) test/main.c -Lbuild -largparse -Iinclude -o $@
+	@$(GCC) test/main.c -Lbuild -largparse -lstdc -o $@ $(inc_dir) $(lib_dir)
 
 clean:
 	@rm -rf build
