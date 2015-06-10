@@ -33,7 +33,7 @@ int main(int ac, char** av)
 	ap_set_defaults(parser_1, "func", f1);
 	ap_set_defaults(parser_2, "func", f2);
 
-	ap_add_argument(parser_1, "-a", "apple",  3 /*nargs=3, required=true*/);
+	ap_add_argument(parser_1, "-a", "apple",  3 /*nargs=3*/);
 
 	ap_add_argument(parser_2, "-a", "apple",  1 /*, default="hello"*/);
 

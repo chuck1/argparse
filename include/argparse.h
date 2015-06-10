@@ -1,8 +1,12 @@
 #ifndef ARGPARSE_H
 #define ARGPARSE_H
 
+//#define AP_ARG_POSITIONAL 0
+//#define AP_ARG_OPTIONAL   1
+
 struct ap_parser
 {
+	struct linkedlist *		_M_args;
 	struct linkedlist *		_M_subparsers;
 };
 struct ap_subparsers
@@ -11,6 +15,12 @@ struct ap_subparsers
 };
 struct ap_args
 {
+};
+struct ap_arg
+{
+	char const *			_M_name;
+	char const *			_M_help;
+	int				_M_nargs;
 };
 
 struct ap_parser * ap_create_parser();

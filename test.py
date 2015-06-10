@@ -17,7 +17,7 @@ parser_0 = subparsers.add_parser('p0')
 parser_0.set_defaults(func=f0)
 
 parser_1 = subparsers.add_parser('p1')
-parser_1.add_argument('-a', nargs=3, required=True)
+parser_1.add_argument('-a', nargs=3)
 parser_1.set_defaults(func=f1)
 
 parser_2 = subparsers.add_parser('p2')
